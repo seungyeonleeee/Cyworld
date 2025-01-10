@@ -1,0 +1,143 @@
+@import "../reset.scss", "../common.scss";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .wrapper_header {
+    .content_title {
+      @include contentTitle;
+      margin-bottom: 10px;
+    }
+    .content {
+      position: relative;
+      height: 220px;
+      border: 1px solid map-get($color, light-gray-color);
+      background: url("../img/miniroom_bg.jpg") center/cover no-repeat;
+      .character {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        width: 40px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .text_box {
+        position: absolute;
+        top: 15%;
+        left: 40%;
+        width: 208px;
+        height: 58px;
+        padding: 10px;
+        background: rgba($color: #ddd, $alpha: 0.8);
+        border-radius: 10px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 10%;
+          transform: translateY(100%);
+          border: 20px solid transparent;
+          border-top-color: rgba($color: #dddddd, $alpha: 0.8);
+          border-bottom: 0;
+          border-left: 0;
+        }
+        .text {
+          font: 400 1.4rem/1.3 "Pretendard-Regular";
+        }
+        .blick {
+          animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .wrapper_body {
+    .content_title {
+      @include contentTitle;
+      margin-bottom: 10px;
+    }
+    .content {
+      width: 100%;
+      form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+        margin-bottom: 10px;
+        #guestname {
+          width: 20%;
+          padding: 5px 10px;
+          border: 1px solid map-get($color, light-gray-color);
+          border-radius: 5px;
+          font: 400 1.4rem/1 "Pretendard-Regular";
+        }
+        #guestbook {
+          width: 80%;
+          padding: 5px 10px;
+          border: 1px solid map-get($color, light-gray-color);
+          border-radius: 5px;
+          margin-right: 5px;
+          font: 400 1.4rem/1 "Pretendard-Regular";
+        }
+        input[type="submit"] {
+          padding: 5px 10px;
+          background: map-get($color, light-gray-color);
+          color: map-get($color, bg-light-color);
+          border-radius: 5px;
+          cursor: pointer;
+          font: 400 1.6rem/1 "Pretendard-Regular";
+        }
+      }
+      .guestbook_area {
+        width: 100%;
+        height: 60px;
+        overflow-y: auto;
+        li {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 2px 0;
+          p {
+            width: 90%;
+            padding: 2px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            border-bottom: 1px dashed map-get($color, light-gray-color);
+            b {
+              font: 400 1.5rem/1 "NeoDunggeunmo";
+            }
+          }
+          span {
+            padding: 5px;
+            font: 400 1.2rem/1 "NeoDunggeunmo";
+            color: map-get($color, accent-color);
+            border: 1px solid map-get($color, light-gray-color);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
